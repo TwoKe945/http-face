@@ -5,6 +5,7 @@ import cn.com.twoke.http.annotation.Parser;
 import cn.com.twoke.http.annotation.ParserManager;
 import cn.com.twoke.http.annotation.Post;
 import cn.com.twoke.http.annotation.creator.ParamsCreator;
+import cn.com.twoke.http.annotation.creator.ReturnCreator;
 import cn.com.twoke.http.config.ParamData;
 import cn.com.twoke.http.module.SimpleHttpSender;
 import cn.com.twoke.http.type.RequestMethod;
@@ -24,7 +25,7 @@ import java.util.Objects;
 public class PostParser implements Parser<Post> {
 
     @Override
-    public Object parse(Post post, Method method, Object... args) {
+    public Object parse(Post post, Method method, Class<?> returnClass, Object... args) {
 //      获取返回类型
         ReturnType returnType = post.returnType();
 //      获取请求地址
@@ -42,13 +43,10 @@ public class PostParser implements Parser<Post> {
         for (ConfigItem configItem : configs) {
             config.putData(configItem.name(), configItem.value());
         }
-
+//      请求数据
         String result = new SimpleHttpSender().doPost(url, params, data, config);
-
-
-
-
-        return result;
+//      处理结果
+        return ReturnCreator.build().create(result, returnClass, returnType);
     }
 
     @Override

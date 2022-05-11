@@ -19,7 +19,7 @@ public interface Parser<T extends Annotation> {
      * @param args 解析的函数参数
      * @return
      */
-    Object parse(T t, Method method, Object ...args);
+    Object parse(T t, Method method, Class<?> returnClass, Object ...args);
 
     /**
      * 获取解析的类型

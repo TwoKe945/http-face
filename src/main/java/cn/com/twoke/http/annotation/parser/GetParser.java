@@ -2,6 +2,7 @@ package cn.com.twoke.http.annotation.parser;
 
 import cn.com.twoke.http.annotation.*;
 import cn.com.twoke.http.annotation.creator.ParamsCreator;
+import cn.com.twoke.http.annotation.creator.ReturnCreator;
 import cn.com.twoke.http.config.ParamData;
 import cn.com.twoke.http.exp.HttpSenderException;
 import cn.com.twoke.http.module.SimpleHttpSender;
@@ -23,7 +24,7 @@ import java.util.Objects;
 public class GetParser implements Parser<Get> {
 
     @Override
-    public Object parse(Get get, Method method, Object... args) {
+    public Object parse(Get get, Method method, Class<?> returnClass, Object... args) {
 //      获取返回类型
         ReturnType returnType = get.returnType();
 //      获取参数接口配置
@@ -43,7 +44,7 @@ public class GetParser implements Parser<Get> {
         }
 //      请求结果
         String result = new SimpleHttpSender().doGet(url, params, config);
-        return result;
+        return ReturnCreator.build().create(result, returnClass, returnType);
     }
 
 

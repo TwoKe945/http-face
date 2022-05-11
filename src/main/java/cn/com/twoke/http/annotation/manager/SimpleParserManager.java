@@ -25,11 +25,11 @@ public class SimpleParserManager implements ParserManager {
     }
 
     @Override
-    public Object parse(Method method, Object ...args) {
+    public Object parse(Method method, Class<?> returnClass,Object ...args) {
         for (int i = 0; i < parsers.size(); i++) {
             Annotation instance = method.getAnnotation(parsers.get(i).getType());
             if (instance != null) {
-                return parsers.get(i).parse(instance, method, args);
+                return parsers.get(i).parse(instance, method, returnClass, args);
             }
         }
         throw new RuntimeException("注解错误！");

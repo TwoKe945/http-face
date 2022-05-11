@@ -24,6 +24,6 @@ public interface ParserManager {
      * @param args 解析的函数参数
      * @return
      */
-    Object parse(Method method, Object ...args);
+    Object parse(Method method, Class<?> returnClass,Object ...args);
 
 }
