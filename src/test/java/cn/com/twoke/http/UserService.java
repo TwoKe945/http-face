@@ -1,8 +1,5 @@
 package cn.com.twoke.http;
-import cn.com.twoke.http.annotation.ConfigItem;
-import cn.com.twoke.http.annotation.Param;
-import cn.com.twoke.http.annotation.Get;
-import cn.com.twoke.http.annotation.Post;
+import cn.com.twoke.http.annotation.*;
 import cn.com.twoke.http.type.ParamPosition;
 import cn.com.twoke.http.type.ReturnType;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -62,6 +59,5 @@ public interface UserService {
             returnType = ReturnType.XML
     )
     Document getDocument();
-
 
 }

@@ -15,11 +15,11 @@ import java.lang.reflect.Proxy;
  * @author TwoKe
  * @title: HttpCreator
  * @projectName http-face
- * @description: TODO
+ * @description: HttpFace构造器
  * @date 2022/5/1123:32
  * @version $Id: $Id
  */
-public class  HttpCreator {
+public class FaceCreator {
     /** Constant <code>parserManager</code> */
     private final static ParserManager parserManager = new SimpleParserManager();
 

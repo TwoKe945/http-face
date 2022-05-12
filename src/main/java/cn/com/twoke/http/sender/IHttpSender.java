@@ -1,4 +1,4 @@
-package cn.com.twoke.http;
+package cn.com.twoke.http.sender;
 
 import java.util.Map;
 

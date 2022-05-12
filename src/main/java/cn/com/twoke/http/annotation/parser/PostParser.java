@@ -2,18 +2,16 @@ package cn.com.twoke.http.annotation.parser;
 
 import cn.com.twoke.http.annotation.ConfigItem;
 import cn.com.twoke.http.annotation.Parser;
-import cn.com.twoke.http.annotation.ParserManager;
 import cn.com.twoke.http.annotation.Post;
 import cn.com.twoke.http.annotation.creator.ParamsCreator;
 import cn.com.twoke.http.annotation.creator.ReturnCreator;
 import cn.com.twoke.http.config.ParamData;
-import cn.com.twoke.http.module.SimpleHttpSender;
+import cn.com.twoke.http.sender.SimpleHttpSender;
 import cn.com.twoke.http.type.RequestMethod;
 import cn.com.twoke.http.type.ReturnType;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.util.Objects;
 
 /**
  * <p>PostParser class.</p>
@@ -21,7 +19,7 @@ import java.util.Objects;
  * @author TwoKe
  * @title: PostRequestParser
  * @projectName http-face
- * @description: TODO
+ * @description: Post 解析器
  * @date 2022/5/1117:41
  * @version $Id: $Id
  */

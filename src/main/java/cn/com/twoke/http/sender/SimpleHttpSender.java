@@ -1,6 +1,5 @@
-package cn.com.twoke.http.module;
+package cn.com.twoke.http.sender;
 
-import cn.com.twoke.http.IHttpSender;
 import cn.com.twoke.http.config.RequestConfig;
 import lombok.extern.slf4j.Slf4j;
 

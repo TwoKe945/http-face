@@ -4,7 +4,7 @@ import cn.com.twoke.http.annotation.*;
 import cn.com.twoke.http.annotation.creator.ParamsCreator;
 import cn.com.twoke.http.annotation.creator.ReturnCreator;
 import cn.com.twoke.http.config.ParamData;
-import cn.com.twoke.http.module.SimpleHttpSender;
+import cn.com.twoke.http.sender.SimpleHttpSender;
 import cn.com.twoke.http.type.RequestMethod;
 import cn.com.twoke.http.type.ReturnType;
 
@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  * @author TwoKe
  * @title: GetRequestParser
  * @projectName http-face
- * @description: 解析器
+ * @description: Get 解析器
  * @date 2022/5/1117:35
  * @version $Id: $Id
  */

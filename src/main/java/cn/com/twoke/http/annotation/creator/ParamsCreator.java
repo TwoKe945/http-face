@@ -53,42 +53,48 @@ public final   class ParamsCreator {
             Object[] args,
             ParamData<String> config) {
         for (int i = 0; Objects.nonNull(args) && i < args.length; i++) {
+            // 获取第一个参数的注解
             Annotation[] annotations = parameterAnnotations[i];
             Object value = args[i];
             if (annotations.length != 1) {
-                throw new HttpFaceException("Request");
+                throw new HttpFaceException("接口方法参数需要添加@Param or @Data 注解标识参数");
             }
             Annotation annotation = annotations[0];
             if(annotation instanceof Param) {
                 Param paramAnnotation= (Param) annotation;
-                // 获取参数名
+//                 获取参数名
                 String name = paramAnnotation.name();
-                // 获取参数的位置
+//                 获取参数的位置
                 ParamPosition position = paramAnnotation.position();
 
-                switch (position) {
-                    case PATH:
-                        String pathKey = "{"+name+"}";
-                        if (url.contains(pathKey)) {
-                            url = url.replace(pathKey, value.toString());;
-                        } else {
-                            throw new HttpFaceException(url + " 不包含地址参数:" + pathKey);
-                        }
-                        break;
-                    case HEADER:
-                        config.putData(name, value.toString());
-                        break;
-                    case URL:
-                        params.putData(name, value);
-                        break;
-                    case BODY:
-                        data.putData(name, value);
-                        break;
-                    case DEFAULT:
-                        dispatchDefault(method, params, data, value, name);
-                        break;
-                }
+                url = loadRequestConfig(method, url, params, data, config, value, name, position);
             }
+        }
+        return url;
+    }
+
+    private String loadRequestConfig(RequestMethod method, String url, ParamData params, ParamData data, ParamData<String> config, Object value, String name, ParamPosition position) {
+        switch (position) {
+            case PATH:
+                String pathKey = "{"+name+"}";
+                if (url.contains(pathKey)) {
+                    url = url.replace(pathKey, value.toString());;
+                } else {
+                    throw new HttpFaceException(url + " 不包含地址参数:" + pathKey);
+                }
+                break;
+            case HEADER:
+                config.putData(name, value.toString());
+                break;
+            case URL:
+                params.putData(name, value);
+                break;
+            case BODY:
+                data.putData(name, value);
+                break;
+            case DEFAULT:
+                dispatchDefault(method, params, data, value, name);
+                break;
         }
         return url;
     }

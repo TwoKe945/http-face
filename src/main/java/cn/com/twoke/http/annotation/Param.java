@@ -10,13 +10,13 @@ import java.lang.annotation.*;
  * @author TwoKe
  * @title: Param
  * @projectName http-face
- * @description: TODO
+ * @description: 简单参数
  * @date 2022/5/1115:24
  * @version $Id: $Id
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.PARAMETER)
+@Target({ElementType.PARAMETER,  ElementType.FIELD})
 public @interface  Param {
 
     /**

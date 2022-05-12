@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  * @author TwoKe
  * @title: Request
  * @projectName http-face
- * @description: 请求
+ * @description: Get请求
  * @date 2022/5/1115:37
  * @version $Id: $Id
  */
