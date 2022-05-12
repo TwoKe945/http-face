@@ -10,29 +10,38 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
+ * <p>HttpCreator class.</p>
+ *
  * @author TwoKe
  * @title: HttpCreator
  * @projectName http-face
  * @description: TODO
  * @date 2022/5/1123:32
+ * @version $Id: $Id
  */
-public enum HttpCreator {
-    INSTANCE;
+public class  HttpCreator {
+    /** Constant <code>parserManager</code> */
     private final static ParserManager parserManager = new SimpleParserManager();
 
     static {
+        /**
+         * 注入解析器
+         */
         parserManager.addParser(new GetParser());
         parserManager.addParser(new PostParser());
     }
 
-    public <T> T getBean(Class<T> clazz) {
-        return (T)Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{clazz}, new InvocationHandler() {
-
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                Class<?> returnType = method.getReturnType();
-                return parserManager.parse(method, returnType, args);
-            }
+    /**
+     * <p>获取接口代理.</p>
+     *
+     * @param clazz a {@link java.lang.Class} object.
+     * @param <T> a T object.
+     * @return a T object.
+     */
+    public static  <T> T getFace(Class<T> clazz) {
+        return (T)Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{clazz}, (Object proxy, Method method, Object[] args) -> {
+            Class<?> returnType = method.getReturnType();
+            return parserManager.parse(method, returnType, args);
         });
     }
 

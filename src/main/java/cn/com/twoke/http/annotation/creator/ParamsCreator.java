@@ -2,7 +2,7 @@ package cn.com.twoke.http.annotation.creator;
 
 import cn.com.twoke.http.annotation.Param;
 import cn.com.twoke.http.config.ParamData;
-import cn.com.twoke.http.exp.HttpSenderException;
+import cn.com.twoke.http.exp.HttpFaceException;
 import cn.com.twoke.http.type.ParamPosition;
 import cn.com.twoke.http.type.RequestMethod;
 
@@ -10,21 +10,30 @@ import java.lang.annotation.Annotation;
 import java.util.Objects;
 
 /**
+ * <p>ParamsCreator class.</p>
+ *
  * @author TwoKe
  * @title: ParamsCreator
  * @projectName http-face
  * @description: 参数构建器
  * @date 2022/5/1118:12
+ * @version $Id: $Id
  */
 public final   class ParamsCreator {
 
     private ParamsCreator() {}
 
+    /**
+     * <p>build.</p>
+     *
+     * @return a {@link cn.com.twoke.http.annotation.creator.ParamsCreator} object.
+     */
     public static ParamsCreator build() {
         return new ParamsCreator();
     }
 
     /**
+     * <p>create.</p>
      *
      * @param url 请求地址
      * @param parameterAnnotations 参数注解
@@ -32,7 +41,8 @@ public final   class ParamsCreator {
      * @param data 请求体参数
      * @param args 请求参数值
      * @param config 请求头参数
-     * @return
+     * @param method a {@link cn.com.twoke.http.type.RequestMethod} object.
+     * @return a {@link java.lang.String} object.
      */
     public String create(
             RequestMethod method,
@@ -46,7 +56,7 @@ public final   class ParamsCreator {
             Annotation[] annotations = parameterAnnotations[i];
             Object value = args[i];
             if (annotations.length != 1) {
-                throw new HttpSenderException("Request");
+                throw new HttpFaceException("Request");
             }
             Annotation annotation = annotations[0];
             if(annotation instanceof Param) {
@@ -62,7 +72,7 @@ public final   class ParamsCreator {
                         if (url.contains(pathKey)) {
                             url = url.replace(pathKey, value.toString());;
                         } else {
-                            throw new HttpSenderException(url + " 不包含地址参数:" + pathKey);
+                            throw new HttpFaceException(url + " 不包含地址参数:" + pathKey);
                         }
                         break;
                     case HEADER:

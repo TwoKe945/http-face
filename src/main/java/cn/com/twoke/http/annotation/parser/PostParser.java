@@ -16,14 +16,18 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 
 /**
+ * <p>PostParser class.</p>
+ *
  * @author TwoKe
  * @title: PostRequestParser
  * @projectName http-face
  * @description: TODO
  * @date 2022/5/1117:41
+ * @version $Id: $Id
  */
 public class PostParser implements Parser<Post> {
 
+    /** {@inheritDoc} */
     @Override
     public Object parse(Post post, Method method, Class<?> returnClass, Object... args) {
 //      获取返回类型
@@ -49,6 +53,7 @@ public class PostParser implements Parser<Post> {
         return ReturnCreator.build().create(result, returnClass, returnType);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Class<? extends Annotation> getType() {
         return Post.class;

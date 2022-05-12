@@ -9,21 +9,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * <p>SimpleParserManager class.</p>
+ *
  * @author TwoKe
  * @title: SimpleParserManager
  * @projectName http-face
  * @description: TODO
  * @date 2022/5/1118:57
+ * @version $Id: $Id
  */
 public class SimpleParserManager implements ParserManager {
 
     private List<Parser> parsers = new ArrayList<>();
 
+    /** {@inheritDoc} */
     @Override
     public void addParser(Parser<?> parser) {
         parsers.add(parser);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Object parse(Method method, Class<?> returnClass,Object ...args) {
         for (int i = 0; i < parsers.size(); i++) {

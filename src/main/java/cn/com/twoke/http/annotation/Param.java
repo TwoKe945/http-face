@@ -5,11 +5,14 @@ import cn.com.twoke.http.type.ParamPosition;
 import java.lang.annotation.*;
 
 /**
+ * <p>Param class.</p>
+ *
  * @author TwoKe
  * @title: Param
  * @projectName http-face
  * @description: TODO
  * @date 2022/5/1115:24
+ * @version $Id: $Id
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)

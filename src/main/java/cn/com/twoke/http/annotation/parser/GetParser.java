@@ -4,25 +4,26 @@ import cn.com.twoke.http.annotation.*;
 import cn.com.twoke.http.annotation.creator.ParamsCreator;
 import cn.com.twoke.http.annotation.creator.ReturnCreator;
 import cn.com.twoke.http.config.ParamData;
-import cn.com.twoke.http.exp.HttpSenderException;
 import cn.com.twoke.http.module.SimpleHttpSender;
-import cn.com.twoke.http.type.ParamPosition;
 import cn.com.twoke.http.type.RequestMethod;
 import cn.com.twoke.http.type.ReturnType;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
-import java.util.Objects;
 
 /**
+ * <p>GetParser class.</p>
+ *
  * @author TwoKe
  * @title: GetRequestParser
  * @projectName http-face
  * @description: 解析器
  * @date 2022/5/1117:35
+ * @version $Id: $Id
  */
 public class GetParser implements Parser<Get> {
 
+    /** {@inheritDoc} */
     @Override
     public Object parse(Get get, Method method, Class<?> returnClass, Object... args) {
 //      获取返回类型
@@ -48,6 +49,7 @@ public class GetParser implements Parser<Get> {
     }
 
 
+    /** {@inheritDoc} */
     @Override
     public Class<? extends Annotation> getType() {
         return Get.class;

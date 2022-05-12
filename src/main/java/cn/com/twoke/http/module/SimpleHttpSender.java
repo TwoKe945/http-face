@@ -15,15 +15,19 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * <p>SimpleHttpSender class.</p>
+ *
  * @author TwoKe
  * @title: SimpleHttpSender
  * @projectName http-face
- * @description: 简单请求发送者
+ * @description: 简单请求头发送
  * @date 2022/5/1113:13
+ * @version $Id: $Id
  */
 @Slf4j
 public class SimpleHttpSender implements IHttpSender {
 
+    /** {@inheritDoc} */
     @Override
     public String doGet(String url, String param, Map<String, String> config) {
         StringBuilder result = new StringBuilder();
@@ -78,6 +82,7 @@ public class SimpleHttpSender implements IHttpSender {
         return result.toString();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String doPost(String url, String param, String data, Map<String, String> config) {
         PrintWriter out = null;
@@ -141,16 +146,19 @@ public class SimpleHttpSender implements IHttpSender {
         return result.toString();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String doPost(String url, Map<String, Object> params, Map<String, Object> data, Map<String, String> config) {
         return doPost(url, createParams(params), createParams(data), config);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String doGet(String url, Map<String, Object> data, Map<String, String> config) {
         return doGet(url, createParams(data), config);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String doPostByByte(String url, byte[] param, Map<String, String> config) {
         PrintWriter out = null;
@@ -160,15 +168,14 @@ public class SimpleHttpSender implements IHttpSender {
         {
             URL realUrl = new URL(url);
             URLConnection conn = realUrl.openConnection();
-            // 设置通用的请求属性
+            // 设置通用的请求头配置
             withConfig(conn, RequestConfig.doPostByteConfig);
             withConfig(conn, config);
-            // 发送POST请求必须设置如下两行
             conn.setDoOutput(true);
             conn.setDoInput(true);
             out = new PrintWriter(conn.getOutputStream());
             out.print(param);
-            // flush输出流的缓冲
+            // flush输出缓冲流
             out.flush();
             in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
             String line;
@@ -215,6 +222,7 @@ public class SimpleHttpSender implements IHttpSender {
         return result.toString();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String doPostSSL(String url, String param, Map<String, String> config) {
         StringBuilder result = new StringBuilder();
@@ -278,7 +286,7 @@ public class SimpleHttpSender implements IHttpSender {
     }
 
     /**
-     * 构造参数
+     * create request parameters
      * @param data
      * @return
      */
@@ -294,7 +302,7 @@ public class SimpleHttpSender implements IHttpSender {
     }
 
     /**
-     * 携带参数
+     * with params
      * @param url
      * @param param
      * @return

@@ -1,3 +1,4 @@
+package cn.com.twoke.http;
 import cn.com.twoke.http.annotation.ConfigItem;
 import cn.com.twoke.http.annotation.Param;
 import cn.com.twoke.http.annotation.Get;

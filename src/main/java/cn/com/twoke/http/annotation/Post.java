@@ -8,11 +8,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * <p>Post class.</p>
+ *
  * @author TwoKe
  * @title: PostRequest
  * @projectName http-face
  * @description: TODO
  * @date 2022/5/1117:28
+ * @version $Id: $Id
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

@@ -17,11 +17,15 @@ import java.io.*;
 import java.util.Map;
 
 /**
+ * <p>XmlUtil class.</p>
+ *
  * @author TwoKe
+ * @version $Id: $Id
  */
 @Slf4j
 public class XmlUtil {
 
+    /** Constant <code>xmlMapper</code> */
     public static XmlMapper xmlMapper = new XmlMapper();
 
     static {
@@ -33,34 +37,38 @@ public class XmlUtil {
     }
 
     /**
-     * 将xml转为bean对象 
+     * <p>xmlToBean.</p>
      *
-     * @param input
-     * @return
-     * @throws IOException
+     * @param input a {@link java.lang.String} object.
+     * @param cls a {@link java.lang.Class} object.
+     * @param <T> a T object.
+     * @return a T object.
+     * @throws java.io.IOException if any.
      */
     public static <T> T xmlToBean(String input, Class<T> cls) throws IOException {
         return xmlMapper.readValue(input, cls);
     }
 
+
     /**
-     * 将bean转为xml字符串，bean需要配置注解@JacksonXmlProperty等。
+     * <p>beanToXmlStr.</p>
      *
-     * @param input
-     * @return
-     * @throws IOException
+     * @param input a {@link java.lang.Object} object.
+     * @return a {@link java.lang.String} object.
+     * @throws java.io.IOException if any.
      */
     public static String beanToXmlStr(Object input) throws IOException {
         String xmlStr = xmlMapper.writeValueAsString(input);
         return xmlStr;
     }
 
+
     /**
-     * 将bean的xml字符串转为map，bean需要配置注解@JacksonXmlProperty等。
+     * <p>beanToXmlStrToMap.</p>
      *
-     * @param input
-     * @return
-     * @throws IOException
+     * @param input a {@link java.lang.Object} object.
+     * @return a {@link java.util.Map} object.
+     * @throws java.io.IOException if any.
      */
     public static Map<String, Object> beanToXmlStrToMap(Object input) throws IOException {
         String xmlStr = xmlMapper.writeValueAsString(input);
@@ -69,9 +77,10 @@ public class XmlUtil {
     }
 
     /**
-     * 读取文件成XML格式。
-     * @param fileName
-     * @return
+     * <p>xmlFileToString.</p>
+     *
+     * @param fileName a {@link java.lang.String} object.
+     * @return a {@link java.lang.String} object.
      */
     public static String xmlFileToString(String fileName) {
         try {
@@ -87,9 +96,10 @@ public class XmlUtil {
     }
 
     /**
-     * 字符串xml解析为document
-     * @param xml
-     * @return
+     * <p>xmlToDocument.</p>
+     *
+     * @param xml a {@link java.lang.String} object.
+     * @return a {@link org.dom4j.Document} object.
      */
     public static Document xmlToDocument(String xml) {
         try {
@@ -106,9 +116,11 @@ public class XmlUtil {
 
 
     /**
-     * @Description 字符串输出到XML文件。
-     * @return void
-     * @Param [str, fileName]
+     * <p>strToXmlFile.</p>
+     *
+     * @param str a {@link java.lang.String} object.
+     * @param fileName a {@link java.io.File} object.
+     * @throws java.io.IOException if any.
      */
     public static void strToXmlFile(String str, File fileName) throws IOException {
         SAXReader saxReader = new SAXReader();
@@ -117,7 +129,6 @@ public class XmlUtil {
         try {
             document = saxReader.read(new ByteArrayInputStream(str.getBytes("UTF-8")));
             OutputFormat format = OutputFormat.createPrettyPrint();
-            /** 将document中的内容写入文件中 */
             writer = new XMLWriter(new FileWriter(fileName), format);
             writer.write(document);
         } catch (DocumentException e) {

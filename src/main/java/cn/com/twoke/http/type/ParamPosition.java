@@ -1,11 +1,14 @@
 package cn.com.twoke.http.type;
 
 /**
+ * <p>ParamPosition class.</p>
+ *
  * @author TwoKe
  * @title: PosType
  * @projectName http-face
  * @description: 参数位置
  * @date 2022/5/1115:26
+ * @version $Id: $Id
  */
 public enum ParamPosition {
     /**
@@ -17,15 +20,15 @@ public enum ParamPosition {
      */
     URL,
     /**
-     * body里面
+     * body
      */
     BODY,
     /**
-     * 请求头里面
+     * request header
      */
     HEADER,
     /**
-     * 默认类型 比如 get 请求默认是 URL, post 请求默认是 body
+     * 默认类型
      */
     DEFAULT
     ;
