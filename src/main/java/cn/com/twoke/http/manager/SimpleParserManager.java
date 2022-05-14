@@ -29,7 +29,7 @@ public class SimpleParserManager implements ParserManager {
     public Object parse(RequestContext requestContext) {
         ApiParser apiParser = parsers.get(requestContext.getMethod());
         if (Objects.nonNull(apiParser)) {
-            System.out.println("调用接口：" + requestContext.getUrl());
+            System.out.println(requestContext.getMethod() + "：" + requestContext.getUrl());
             return apiParser.parse(requestContext);
         }
         String methodName = requestContext.getFunction().getMethodName();

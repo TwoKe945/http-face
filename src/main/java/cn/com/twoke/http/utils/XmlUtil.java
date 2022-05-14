@@ -22,7 +22,6 @@ import java.util.Map;
  * @author TwoKe
  * @version $Id: $Id
  */
-@Slf4j
 public final class XmlUtil {
 
     /** Constant <code>xmlMapper</code> */

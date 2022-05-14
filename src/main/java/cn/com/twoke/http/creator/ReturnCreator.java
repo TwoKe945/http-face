@@ -38,6 +38,7 @@ public final class ReturnCreator {
      * @return a {@link java.lang.Object} object.
      */
     public Object create(String result, Class<?> returnClass, ReturnType returnType) {
+        System.out.println("recv: " + result);
 //      如果是String 对象直接返回
         if (returnClass.equals(String.class)) {
             return result;
