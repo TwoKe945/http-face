@@ -79,7 +79,7 @@ public class FaceCreator {
                         url = url.replace("{"+variable.name()+"}", value.toString());
                     }else if (parameterAnnotation instanceof Header) {
                         Header header = convert(parameterAnnotation);
-                        headers.putData(header.name(), header.value());
+                        headers.putData(header.name(), value.toString());
                     } else if (parameterAnnotation instanceof Param) {
                         Param param = convert(parameterAnnotation);
                         params.append(MessageFormat.format("{0}={1}&", param.name(), value.toString()));

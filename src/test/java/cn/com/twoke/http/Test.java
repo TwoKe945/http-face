@@ -32,30 +32,30 @@ public class Test {
 
         System.out.println(userService.getUserList());
 
-        UserInfo user = userService.getUserPath("1");
+        UserInfo user = userService.getUserPath("1", "xxx");
         System.out.println(user);
-        System.out.println(userService.getUserPath("1"));
+//        System.out.println(userService.getUserPath("1"));
 
-        Map<String, Object> save = userService.saveBody(user);
-        System.out.println(save);
-
-        FileService face = FaceCreator.getFace(FileService.class);
-
-        Map<String, Object> stringObjectMap = face.saveFile(
-                new PostFile(
-                        new File("D:\\Users\\TwoKe\\Desktop\\px2vwAndvh.txt"),
-                        "用户名",
-                        "密码"
-                )
-        );
-
-        System.out.println(stringObjectMap);
-
-        XmlService xmlService =  FaceCreator.getFace(XmlService.class);
-
-        Email xml = xmlService.getXml();
-
-        System.out.println(xml);
+//        Map<String, Object> save = userService.saveBody(user);
+//        System.out.println(save);
+//
+//        FileService face = FaceCreator.getFace(FileService.class);
+//
+//        Map<String, Object> stringObjectMap = face.saveFile(
+//                new PostFile(
+//                        new File("D:\\Users\\TwoKe\\Desktop\\px2vwAndvh.txt"),
+//                        "用户名",
+//                        "密码"
+//                )
+//        );
+//
+//        System.out.println(stringObjectMap);
+//
+//        XmlService xmlService =  FaceCreator.getFace(XmlService.class);
+//
+//        Email xml = xmlService.getXml();
+//
+//        System.out.println(xml);
 
     }
 

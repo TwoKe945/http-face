@@ -34,7 +34,7 @@ public interface UserService {
      * @return a {@link cn.com.twoke.http.entity.UserInfo} object.
      */
     @Api("/userInfo/{id}")
-    UserInfo getUserPath(@PathVariable(name ="id") String id);
+    UserInfo getUserPath(@PathVariable(name ="id") String id, @Header(name ="token") String token);
 
     /**
      * <p>getUserList.</p>
