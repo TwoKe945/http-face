@@ -1,7 +1,8 @@
-package cn.com.twoke.http.annotation.creator;
+package cn.com.twoke.http.creator;
 
 import cn.com.twoke.http.exp.HttpFaceException;
 import cn.com.twoke.http.type.ReturnType;
+import cn.com.twoke.http.utils.ObjectMapperUtil;
 import cn.com.twoke.http.utils.XmlUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -11,14 +12,11 @@ import org.dom4j.Document;
 import java.io.IOException;
 
 /**
- * <p>ReturnCreator class.</p>
+ * <p>结果创造器</p>
  *
  * @author TwoKe
- * @title: ReturenCreator
- * @projectName http-face
- * @description: 结果创造器
- * @date 2022/5/1122:10
- * @version $Id: $Id
+ * @version 1.0.0
+ * @since 2022/5/14 0:50
  */
 public final class ReturnCreator {
 
@@ -27,7 +25,7 @@ public final class ReturnCreator {
     /**
      * <p>build.</p>
      *
-     * @return a {@link cn.com.twoke.http.annotation.creator.ReturnCreator} object.
+     * @return a {@link cn.com.twoke.http.creator.ReturnCreator} object.
      */
     public static ReturnCreator build() { return new ReturnCreator(); }
 
@@ -54,12 +52,11 @@ public final class ReturnCreator {
     }
 
     private Object parseJson(String result, Class<?> returnClass) {
-        ObjectMapper objectMapper = new ObjectMapper();
         try {
             if (returnClass.equals(JsonNode.class)) {
-                return objectMapper.readTree(result);
+                return ObjectMapperUtil.getInstance().readTree(result);
             }
-            return objectMapper.readValue(result, returnClass);
+            return ObjectMapperUtil.getInstance().readValue(result, returnClass);
         } catch (JsonProcessingException e) {
             throw new HttpFaceException("请求结果转化失败！").setResult(result);
         }

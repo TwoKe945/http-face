@@ -1,5 +1,7 @@
 package cn.com.twoke.http.annotation;
 
+import cn.com.twoke.http.type.ContentType;
+import cn.com.twoke.http.type.MethodType;
 import cn.com.twoke.http.type.ReturnType;
 
 import java.lang.annotation.ElementType;
@@ -8,23 +10,26 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>Get class.</p>
+ * <p>请求接口</p>
  *
  * @author TwoKe
- * @title: Request
- * @projectName http-face
- * @description: Get请求
- * @date 2022/5/1115:37
- * @version $Id: $Id
+ * @version 1.0.0
+ * @since 2022/5/14 0:20
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Get {
+public @interface Api {
     /**
      * 请求地址
      * @return
      */
     String value();
+
+    /**
+     * 请求方法
+     * @return
+     */
+    MethodType method() default MethodType.GET;
 
     /**
      * 返回的接口格式
@@ -33,8 +38,14 @@ public @interface Get {
     ReturnType returnType() default ReturnType.JSON;
 
     /**
-     * 接口固定参数配置
+     * 传递参数类型
      * @return
      */
-    ConfigItem[] configs() default {};
+    ContentType contentType() default ContentType.JSON;
+
+    /**
+     * 接口固定请求头配置
+     * @return
+     */
+    Header[] headers() default {};
 }

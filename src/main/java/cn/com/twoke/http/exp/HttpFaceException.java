@@ -3,15 +3,13 @@ package cn.com.twoke.http.exp;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+
 /**
- * <p>HttpSenderException class.</p>
+ * <p>HttpFaceException</p>
  *
  * @author TwoKe
- * @title: HttpSenderExecption
- * @projectName http-face
- * @description: HttpSenderException
- * @date 2022/5/1113:23
- * @version $Id: $Id
+ * @version 1.0.0
+ * @since 2022/5/14 0:50
  */
 @Data
 @Accessors(chain = true)

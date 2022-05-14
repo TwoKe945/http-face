@@ -23,7 +23,7 @@ import java.util.Map;
  * @version $Id: $Id
  */
 @Slf4j
-public class XmlUtil {
+public final class XmlUtil {
 
     /** Constant <code>xmlMapper</code> */
     public static XmlMapper xmlMapper = new XmlMapper();

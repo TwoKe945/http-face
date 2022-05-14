@@ -6,7 +6,7 @@
 
     <groupId>cn.com.twoke</groupId>
     <artifactId>http-face</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <properties>
         <lombok.version>1.18.24</lombok.version>
@@ -14,6 +14,7 @@
         <jackson.version>2.13.2.1</jackson.version>
         <dom4j.version>2.1.1</dom4j.version>
         <jackson.xml.version>2.10.1</jackson.xml.version>
+        <okhttp.version>3.14.9</okhttp.version>
         <gpg.keyname>0x0A838FF1</gpg.keyname>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -51,6 +52,16 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.xml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>1.25</version>
         </dependency>
     </dependencies>
 
