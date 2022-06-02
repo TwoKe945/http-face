@@ -1,13 +1,12 @@
 package cn.com.twoke.http;
 
 import cn.com.twoke.http.creator.FaceCreator;
-import cn.com.twoke.http.entity.Email;
 import cn.com.twoke.http.entity.PostFile;
 import cn.com.twoke.http.entity.UserInfo;
 import cn.com.twoke.http.service.FileService;
 import cn.com.twoke.http.service.UserService;
-import cn.com.twoke.http.service.XmlService;
-
+import org.junit.Assert;
+import org.junit.Test;
 import java.io.File;
 import java.util.Map;
 
@@ -19,7 +18,23 @@ import java.util.Map;
  * @version $Id: $Id
  * @since 1.0.2
  */
-public class Test {
+public class FileServiceTest {
+
+    /**
+     * 测试文件上传
+     */
+    @Test
+    public void testUpload() {
+       FileService face = FaceCreator.getFace(FileService.class);
+       Map<String, Object> stringObjectMap = face.saveFile(
+               new PostFile(
+                       new File("D:\\Users\\TwoKe\\Desktop\\px2vwAndvh.txt"),
+                       "root",
+                       "123456"
+               )
+       );
+        Assert.assertEquals("{msg=请求成功, code=200, data=px2vwAndvh.txt}", stringObjectMap.toString());
+    }
 
     /**
      * <p>main.</p>
@@ -39,15 +54,7 @@ public class Test {
 //        Map<String, Object> save = userService.saveBody(user);
 //        System.out.println(save);
 //
-//        FileService face = FaceCreator.getFace(FileService.class);
 //
-//        Map<String, Object> stringObjectMap = face.saveFile(
-//                new PostFile(
-//                        new File("D:\\Users\\TwoKe\\Desktop\\px2vwAndvh.txt"),
-//                        "用户名",
-//                        "密码"
-//                )
-//        );
 //
 //        System.out.println(stringObjectMap);
 //
@@ -58,5 +65,8 @@ public class Test {
 //        System.out.println(xml);
 
     }
+
+
+
 
 }

@@ -30,5 +30,4 @@ public interface FileService {
     @Api(value = "/file", method = MethodType.POST, contentType = ContentType.MULTIPART)
     Map<String, Object> saveFile(@Body PostFile file);
 
-
 }
