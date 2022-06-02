@@ -21,7 +21,7 @@ import java.util.Map;
  * @version $Id: $Id
  * @since 1.0.2
  */
-public class FileServiceTest {
+public class TestPlayground {
 
     /**
      * 测试文件上传
@@ -63,30 +63,15 @@ public class FileServiceTest {
     }
 
     /**
-     * <p>main.</p>
-     *
-     * @param args an array of {@link java.lang.String} objects.
+     * 测试post请求
      */
-    public void main(String[] args) {
+    @Test
+    public void testPostMethod() {
+       UserService userService = FaceCreator.getFace(UserService.class);
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId("1").setRealName("TwoKe").setCellPhone("184xxxxxxxxx").setCity("China").setStreet("Cq").setUniversityName("xxxx大学");
 
-
-
-        // UserInfo user = userService.getUserPath("1", "xxx");
-        // System.out.println(user);
-//        System.out.println(userService.getUserPath("1"));
-
-//        Map<String, Object> save = userService.saveBody(user);
-//        System.out.println(save);
-//
-//
-//
-//        System.out.println(stringObjectMap);
-//
-
-
+        Map<String, Object> result = userService.saveBody(userInfo);
+        assertEquals("{msg=请求成功, code=200, data={id=1, realName=TwoKe, cellPhone=184xxxxxxxxx, universityName=xxxx大学, city=China, street=Cq}}", result.toString());
     }
-
-
-
-
 }
