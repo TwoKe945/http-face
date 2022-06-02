@@ -10,6 +10,7 @@ import cn.com.twoke.http.service.XmlService;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 
@@ -51,18 +52,27 @@ public class FileServiceTest {
     }
 
     /**
+     * 测试get请求
+     */
+    @Test
+    public void testGetMethod() {
+        UserService userService = FaceCreator.getFace(UserService.class);
+        List<UserInfo> userList = userService.getUserList();
+        int size = userList.size();
+        assertEquals(20, size);
+    }
+
+    /**
      * <p>main.</p>
      *
      * @param args an array of {@link java.lang.String} objects.
      */
     public void main(String[] args) {
 
-        UserService userService = FaceCreator.getFace(UserService.class);
 
-        System.out.println(userService.getUserList());
 
-        UserInfo user = userService.getUserPath("1", "xxx");
-        System.out.println(user);
+        // UserInfo user = userService.getUserPath("1", "xxx");
+        // System.out.println(user);
 //        System.out.println(userService.getUserPath("1"));
 
 //        Map<String, Object> save = userService.saveBody(user);
