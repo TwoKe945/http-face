@@ -1,11 +1,13 @@
 package cn.com.twoke.http;
 
 import cn.com.twoke.http.creator.FaceCreator;
+import cn.com.twoke.http.entity.Email;
 import cn.com.twoke.http.entity.PostFile;
 import cn.com.twoke.http.entity.UserInfo;
 import cn.com.twoke.http.service.FileService;
 import cn.com.twoke.http.service.UserService;
-import org.junit.Assert;
+import cn.com.twoke.http.service.XmlService;
+import static org.junit.Assert.*;
 import org.junit.Test;
 import java.io.File;
 import java.util.Map;
@@ -33,7 +35,19 @@ public class FileServiceTest {
                        "123456"
                )
        );
-        Assert.assertEquals("{msg=请求成功, code=200, data=px2vwAndvh.txt}", stringObjectMap.toString());
+        assertEquals("{msg=请求成功, code=200, data=px2vwAndvh.txt}", stringObjectMap.toString());
+    }
+
+    /**
+     * 测试Xml格式转换器
+     */
+    @Test
+    public void testXmlData() {
+       XmlService xmlService =  FaceCreator.getFace(XmlService.class);
+
+       Email xml = xmlService.getXml();
+
+       assertEquals("Email(from=TwoKe, to=ZhangSan, content=Hello World)", xml.toString());
     }
 
     /**
@@ -41,7 +55,7 @@ public class FileServiceTest {
      *
      * @param args an array of {@link java.lang.String} objects.
      */
-    public static void main(String[] args) {
+    public void main(String[] args) {
 
         UserService userService = FaceCreator.getFace(UserService.class);
 
@@ -58,11 +72,7 @@ public class FileServiceTest {
 //
 //        System.out.println(stringObjectMap);
 //
-//        XmlService xmlService =  FaceCreator.getFace(XmlService.class);
-//
-//        Email xml = xmlService.getXml();
-//
-//        System.out.println(xml);
+
 
     }
 
