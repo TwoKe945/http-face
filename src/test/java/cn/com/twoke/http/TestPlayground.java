@@ -4,6 +4,7 @@ import cn.com.twoke.http.creator.FaceCreator;
 import cn.com.twoke.http.entity.Email;
 import cn.com.twoke.http.entity.PostFile;
 import cn.com.twoke.http.entity.UserInfo;
+import cn.com.twoke.http.exp.HttpFaceException;
 import cn.com.twoke.http.service.FileService;
 import cn.com.twoke.http.service.UserService;
 import cn.com.twoke.http.service.XmlService;
@@ -87,7 +88,19 @@ public class TestPlayground {
      */
     @Test
     public void testPathVariable() {
-        UserInfo userInfo = userService.getUserPath("1", "123456");
-        assertNotEquals(null, userInfo);
+        userService.getUserPath("1", "123456");
+    }
+
+    /**
+     * 测试错误请求处理
+     */
+    @Test
+    public void testRequestError() {
+        try {
+            UserInfo userInfo = userService.getUserPath("01", "123456");
+            System.out.println(userInfo);
+        } catch (HttpFaceException e) {
+            System.out.println("接收到结果处理: " +  e.getResult());
+        }
     }
 }
