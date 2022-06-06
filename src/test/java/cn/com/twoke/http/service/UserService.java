@@ -1,4 +1,6 @@
 package cn.com.twoke.http.service;
+import cn.com.twoke.http.annotation.mapping.GetMapping;
+import cn.com.twoke.http.annotation.mapping.RequestMapping;
 import cn.com.twoke.http.entity.UserInfo;
 import cn.com.twoke.http.annotation.*;
 import cn.com.twoke.http.type.ContentType;
@@ -24,7 +26,7 @@ public interface UserService {
      * @param userId a {@link java.lang.String} object.
      * @return a {@link cn.com.twoke.http.entity.UserInfo} object.
      */
-    @Api("/userInfo")
+    @GetMapping("/userInfo")
     UserInfo getUserInfo(@Param(name = "id") String userId);
 
     /**
@@ -33,7 +35,7 @@ public interface UserService {
      * @param id a {@link java.lang.String} object.
      * @return a {@link cn.com.twoke.http.entity.UserInfo} object.
      */
-    @Api("/userInfo/{id}")
+    @GetMapping("/userInfo/{id}")
     UserInfo getUserPath(@PathVariable(name ="id") String id, @Header(name ="token") String token);
 
     /**
@@ -41,7 +43,7 @@ public interface UserService {
      *
      * @return a {@link java.util.List} object.
      */
-    @Api("/user/list")
+    @GetMapping("/user/list")
     List<UserInfo> getUserList();
 
     /**
@@ -50,7 +52,7 @@ public interface UserService {
      * @param userInfo a {@link cn.com.twoke.http.entity.UserInfo} object.
      * @return a {@link java.util.Map} object.
      */
-    @Api(value = "/save", method = MethodType.POST, contentType = ContentType.FORM)
+    @RequestMapping(value = "/save", method = MethodType.POST, contentType = ContentType.FORM)
     Map<String, Object> saveBody(@Body UserInfo userInfo);
 
 }

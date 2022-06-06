@@ -1,6 +1,7 @@
 package cn.com.twoke.http.creator;
 
 import cn.com.twoke.http.annotation.*;
+import cn.com.twoke.http.annotation.mapping.RequestMapping;
 import cn.com.twoke.http.config.ParamData;
 import cn.com.twoke.http.config.RequestContext;
 import cn.com.twoke.http.config.ServiceContext;
@@ -8,6 +9,8 @@ import cn.com.twoke.http.manager.ParserManager;
 import cn.com.twoke.http.manager.SimpleParserManager;
 import cn.com.twoke.http.parser.GetParser;
 import cn.com.twoke.http.parser.PostParser;
+import cn.com.twoke.http.parser.mapping.MappingAdapterWrapper;
+import cn.com.twoke.http.parser.mapping.MappingParserManager;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -58,7 +61,11 @@ public class FaceCreator {
             Annotation[][] parametersAnnotations = method.getParameterAnnotations();
             StringBuilder params = new StringBuilder("?");
 //          获取请求
-            Api apiAnnotation = method.getAnnotation(Api.class);
+            // 映射解析器 获取
+
+            MappingAdapterWrapper apiAnnotation = MappingParserManager.MappingInstance.getMapping(method);
+
+
             ParamData<String> headers = ParamData.newParam();
             for (Header header : apiAnnotation.headers()) {
                 headers.putData(header.name(), header.value());

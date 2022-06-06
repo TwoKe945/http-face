@@ -1,6 +1,6 @@
 package cn.com.twoke.http.service;
 
-import cn.com.twoke.http.annotation.Api;
+import cn.com.twoke.http.annotation.mapping.RequestMapping;
 import cn.com.twoke.http.annotation.ServiceClient;
 import cn.com.twoke.http.entity.Email;
 import cn.com.twoke.http.type.ReturnType;
@@ -20,6 +20,6 @@ public interface XmlService {
      *
      * @return a {@link cn.com.twoke.http.entity.Email} object.
      */
-    @Api(value = "/xml", returnType = ReturnType.XML)
+    @RequestMapping(value = "/xml", returnType = ReturnType.XML)
     Email getXml();
 }

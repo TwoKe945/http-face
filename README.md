@@ -12,7 +12,7 @@
 <dependency>
   <groupId>cn.com.twoke</groupId>
   <artifactId>http-face</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 ### 准备的实体类
@@ -58,20 +58,20 @@ public class PostFile {
 @ServiceClient("http://127.0.0.1:8080")
 public interface UserService {
     
-    // 默认为get请求
-    @Api("/userInfo")
+    // get请求
+    @GetMapping("/userInfo")
     UserInfo getUserInfo(@Param(name = "id") String userId);
     
-    // 默认为get请求，使用路径传参
-    @Api("/userInfo/{id}")
+    // get请求，使用路径传参
+    @GetMapping("/userInfo/{id}")
     UserInfo getUserPath(@PathVariable(name ="id") String id);
     
     // 默认为get请求
-    @Api("/user/list")
+    @RequestMapping("/user/list")
     List<UserInfo> getUserList();
     
     // post 请求
-    @Api(value = "/save", method = MethodType.POST, contentType = ContentType.FORM)
+    @PostMapping(value = "/save", contentType = ContentType.FORM)
     Map<String, Object> saveBody(@Body UserInfo userInfo);
 
 }
@@ -108,7 +108,7 @@ public class Test {
 public interface FileService {
 
     // 文件上传
-    @Api(value = "/file", method = MethodType.POST, contentType = ContentType.MULTIPART)
+    @PostMapping(value = "/file", contentType = ContentType.MULTIPART)
     Map<String, Object> saveFile(@Body PostFile file);
     
 }
@@ -140,7 +140,7 @@ public class Test {
 @ServiceClient("http://localhost:8080")
 public interface XmlService {
 
-    @Api(value = "/xml", returnType = ReturnType.XML)
+    @RequestMapping(value = "/xml", returnType = ReturnType.XML)
     Email getXml();
 
 }

@@ -1,13 +1,13 @@
 package cn.com.twoke.http.service;
 
+import cn.com.twoke.http.annotation.mapping.PostMapping;
 import cn.com.twoke.http.entity.PostFile;
-import cn.com.twoke.http.annotation.Api;
+import cn.com.twoke.http.annotation.mapping.RequestMapping;
 import cn.com.twoke.http.annotation.Body;
 import cn.com.twoke.http.annotation.ServiceClient;
 import cn.com.twoke.http.type.ContentType;
 import cn.com.twoke.http.type.MethodType;
 
-import java.io.File;
 import java.util.Map;
 
 /**
@@ -27,7 +27,7 @@ public interface FileService {
      * @param file a {@link cn.com.twoke.http.entity.PostFile} object.
      * @return a {@link java.util.Map} object.
      */
-    @Api(value = "/file", method = MethodType.POST, contentType = ContentType.MULTIPART)
+    @PostMapping(value = "/file", contentType = ContentType.MULTIPART)
     Map<String, Object> saveFile(@Body PostFile file);
 
 }
