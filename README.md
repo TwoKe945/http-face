@@ -12,7 +12,7 @@
 <dependency>
   <groupId>cn.com.twoke</groupId>
   <artifactId>http-face</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
 </dependency>
 ```
 ### 准备的实体类

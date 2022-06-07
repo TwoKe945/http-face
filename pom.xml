@@ -6,7 +6,7 @@
 
     <groupId>cn.com.twoke</groupId>
     <artifactId>http-face</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <properties>
         <lombok.version>1.18.24</lombok.version>
@@ -52,6 +52,11 @@
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
             <version>1.25</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.twoke</groupId>
+            <artifactId>java-kit</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
